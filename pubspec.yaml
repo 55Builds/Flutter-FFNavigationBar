@@ -1,8 +1,8 @@
 name: ff_navigation_bar
 description: Configurable bottom navigation bar with raised highlight and shadow
 version: 0.0.1
-author:
-homepage:
+author: 55 Builds <jwb@55builds.com>
+homepage: https://github.com/jwbaldry/Flutter-FFNavigationBar
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
