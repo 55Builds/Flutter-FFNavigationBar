@@ -5,6 +5,9 @@ import 'package:provider/provider.dart';
 import 'ff_navigation_bar_theme.dart';
 import 'ff_navigation_bar_item.dart';
 
+export 'ff_navigation_bar_theme.dart';
+export 'ff_navigation_bar_item.dart';
+
 class FFNavigationBar extends StatefulWidget {
   final Function onSelectTab;
   final List<FFNavigationBarItem> items;
