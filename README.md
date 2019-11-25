@@ -13,54 +13,57 @@ dependencies:
 import 'package:flutter/material.dart';
 import 'package:ff_navigation_bar/ff_navigation_bar.dart';
 ...
-          return Scaffold(
-            backgroundColor: Colors.grey[200],
-            body: CustomScrollView(
-              slivers: [
-                ESSliverAppBar(
-                  context: context,
-                  title: homeData.getTitle(),
-                  actions: homeData.getAvailableActions(),
-                  forceElevated: true,
-                ),
-                SliverFillRemaining(
-                  child: homeData.getChild(),
-                ),
-              ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'Demonstration',
             ),
-            bottomNavigationBar: FFNavigationBar(
-              theme: FFNavigationBarTheme(
-                barBackgroundColor: Colors.white,
-                selectedItemBackgroundColor: Colors.green,
-                selectedItemIconColor: Colors.white,
-                selectedItemLabelColor: Colors.black,
-              ),
-              selectedIndex: 1,
-              onSelectTab: (index) {},
-              items: [
-                FFNavigationBarItem(
-                  iconData: Icons.calendar_today,
-                  label: 'Schedule',
-                ),
-                FFNavigationBarItem(
-                  iconData: Icons.people,
-                  label: 'Contacts',
-                ),
-                FFNavigationBarItem(
-                  iconData: Icons.attach_money,
-                  label: 'Bills',
-                ),
-                FFNavigationBarItem(
-                  iconData: Icons.note,
-                  label: 'Notes',
-                ),
-                FFNavigationBarItem(
-                  iconData: Icons.settings,
-                  label: 'Settings',
-                ),
-              ],
-            ),
-          );
+          ],
+        ),
+      ),
+      bottomNavigationBar: FFNavigationBar(
+        theme: FFNavigationBarTheme(
+          barBackgroundColor: Colors.white,
+          selectedItemBackgroundColor: Colors.green,
+          selectedItemIconColor: Colors.white,
+          selectedItemLabelColor: Colors.black,
+        ),
+        selectedIndex: selectedIndex,
+        onSelectTab: (index) {
+          setState(() {
+            selectedIndex = index;
+          });
+        },
+        items: [
+          FFNavigationBarItem(
+            iconData: Icons.calendar_today,
+            label: 'Schedule',
+          ),
+          FFNavigationBarItem(
+            iconData: Icons.people,
+            label: 'Contacts',
+          ),
+          FFNavigationBarItem(
+            iconData: Icons.attach_money,
+            label: 'Bills',
+          ),
+          FFNavigationBarItem(
+            iconData: Icons.note,
+            label: 'Notes',
+          ),
+          FFNavigationBarItem(
+            iconData: Icons.settings,
+            label: 'Settings',
+          ),
+        ],
+      ),
+    );
 ```
 
 ## Theme
