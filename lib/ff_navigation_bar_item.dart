@@ -30,8 +30,12 @@ class FFNavigationBarItem extends StatelessWidget {
     this.index = index;
   }
 
+  Color _getDerivedBorderColor() {
+    return theme.selectedItemBorderColor ?? theme.barBackgroundColor;
+  }
+
   Color _getBorderColor(bool isOn) {
-    return isOn ? theme.barBackgroundColor : Colors.transparent;
+    return isOn ? _getDerivedBorderColor() : Colors.transparent;
   }
 
   bool _isItemSelected() {

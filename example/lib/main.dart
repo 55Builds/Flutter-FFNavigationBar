@@ -26,7 +26,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
   int selectedIndex = 0;
 
   @override
@@ -47,10 +46,11 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       bottomNavigationBar: FFNavigationBar(
         theme: FFNavigationBarTheme(
-          barBackgroundColor: Colors.white,
+          barBackgroundColor: Colors.black87,
+          selectedItemBorderColor: Colors.transparent,
           selectedItemBackgroundColor: Colors.green,
           selectedItemIconColor: Colors.white,
-          selectedItemLabelColor: Colors.black,
+          selectedItemLabelColor: Colors.white,
         ),
         selectedIndex: selectedIndex,
         onSelectTab: (index) {

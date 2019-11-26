@@ -1,3 +1,7 @@
+## [0.1.2] - 27-NOV-2019
+
+* Added support for selectedItemBorderColor in the theme options
+
 ## [0.1.1] - 16-NOV-2019
 
 * Fixed example code and tidied deployment structure
