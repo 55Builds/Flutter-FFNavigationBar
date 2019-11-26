@@ -5,7 +5,7 @@ A highly configurable navigation bar with emphasis for the selected item.
 ## Add dependency
 ```
 dependencies:
-  ff_navigation_bar: ^0.0.1
+  ff_navigation_bar: ^0.1.0
 ```
 
 ## Basic use
@@ -30,6 +30,7 @@ import 'package:ff_navigation_bar/ff_navigation_bar.dart';
       bottomNavigationBar: FFNavigationBar(
         theme: FFNavigationBarTheme(
           barBackgroundColor: Colors.white,
+          selectedItemBorderColor: Colors.yellow,
           selectedItemBackgroundColor: Colors.green,
           selectedItemIconColor: Colors.white,
           selectedItemLabelColor: Colors.black,
@@ -72,6 +73,7 @@ The navbar has a Theme class which can be used to define the majority of appeara
 * selectedItemBackgroundColor: The background color for the CircleAvatar widget used to display the selected item's icon (default = blueAccent)
 * selectedItemIconColor: The color for the selected item's icon (default = white)
 * selectedItemLabelColor: The color for the selected item's label (default = black)
+* selectedItemBorderColor: The color for the selected item's border (default = white)
 * unselectedItemBackgroundColor: The background color for unselected items (default = transparent)
 * unselectedItemIconColor: The color for unselected items' icons (default = grey)
 * unselectedItemLabelColor: The color for unselected items' icons (default = grey)

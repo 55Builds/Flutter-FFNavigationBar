@@ -5,6 +5,7 @@ class FFNavigationBarTheme {
   final Color selectedItemBackgroundColor;
   final Color selectedItemIconColor;
   final Color selectedItemLabelColor;
+  final Color selectedItemBorderColor;
   final Color unselectedItemBackgroundColor;
   final Color unselectedItemIconColor;
   final Color unselectedItemLabelColor;
@@ -36,6 +37,7 @@ class FFNavigationBarTheme {
     this.selectedItemBackgroundColor = Colors.blueAccent,
     this.selectedItemIconColor = Colors.white,
     this.selectedItemLabelColor = Colors.black,
+    this.selectedItemBorderColor = Colors.white,
     this.unselectedItemBackgroundColor = Colors.transparent,
     this.unselectedItemIconColor = Colors.grey,
     this.unselectedItemLabelColor = Colors.grey,

@@ -11,7 +11,7 @@ dependencies:
     sdk: flutter
 
   ff_navigation_bar:
-    path: ../../
+    path: ../
 
 dev_dependencies:
   flutter_test:
