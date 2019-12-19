@@ -154,7 +154,7 @@ class FFNavigationBarItem extends StatelessWidget {
 
     Widget labelWidget = _makeLabel(label);
     Widget iconAreaWidget = _makeIconArea(itemWidth, iconData);
-    Widget shadowWidget = _makeShadow();
+    Widget shadowWidget = showSelectedItemShadow ? _makeShadow() : Container();
 
     return AnimatedContainer(
       width: itemWidth,

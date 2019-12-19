@@ -46,11 +46,13 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       bottomNavigationBar: FFNavigationBar(
         theme: FFNavigationBarTheme(
-          barBackgroundColor: Colors.black87,
+          barBackgroundColor: Colors.white,
           selectedItemBorderColor: Colors.transparent,
           selectedItemBackgroundColor: Colors.green,
           selectedItemIconColor: Colors.white,
-          selectedItemLabelColor: Colors.white,
+          selectedItemLabelColor: Colors.black,
+          showSelectedItemShadow: false,
+          barHeight: 70,
         ),
         selectedIndex: selectedIndex,
         onSelectTab: (index) {
