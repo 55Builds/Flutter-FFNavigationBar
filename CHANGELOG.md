@@ -1,3 +1,8 @@
+## [0.1.3] - 20-DEC-2019
+
+* Fixed bug where setting showSelectedItemShadow = false in the theme did not hide the shadow on the navbar
+* Demo app updated to a taller bar height and cleaner style for better display across devices
+
 ## [0.1.2] - 27-NOV-2019
 
 * Added support for selectedItemBorderColor in the theme options
