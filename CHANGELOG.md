@@ -1,3 +1,7 @@
+## [0.1.4] - 20-JAN-2010
+
+* Maintenance release with support for Provider library version 4.0.2
+
 ## [0.1.3] - 20-DEC-2019
 
 * Fixed bug where setting showSelectedItemShadow = false in the theme did not hide the shadow on the navbar
