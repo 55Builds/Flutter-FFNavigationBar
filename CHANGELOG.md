@@ -1,4 +1,8 @@
-## [0.1.4] - 20-JAN-2010
+## [0.1.5] - 22-FEB-2020
+
+* Fixed bug where hitbox for each navigation item collapsed to its content size.  Now uses a SizedBox to fix the hitbox to the theme's barHeight value and the navigation bar's width / number of items in the bar.  This gives a uniform hitbox size for each item.
+
+## [0.1.4] - 20-JAN-2020
 
 * Maintenance release with support for Provider library version 4.0.2
 
