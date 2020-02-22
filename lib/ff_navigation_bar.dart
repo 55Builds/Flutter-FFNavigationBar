@@ -75,7 +75,15 @@ class _FFNavigationBarState extends State<FFNavigationBar> {
                       selectedIndex = index;
                     });
                   },
-                  child: item,
+                  child: Container(
+                    color: Colors.transparent,
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width /
+                          widget.items.length,
+                      height: theme.barHeight,
+                      child: item,
+                    ),
+                  ),
                 );
               }).toList(),
             ),
