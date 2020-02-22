@@ -5,7 +5,7 @@ A highly configurable navigation bar with emphasis for the selected item.
 ## Add dependency
 ```
 dependencies:
-  ff_navigation_bar: ^0.1.4
+  ff_navigation_bar: ^0.1.5
 ```
 
 ## Basic use
