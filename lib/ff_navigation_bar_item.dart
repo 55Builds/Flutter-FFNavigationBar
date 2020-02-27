@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'ff_navigation_bar_theme.dart';
+import 'dart:ui' as ui;
 
 // This class has mutable instance properties as they are used to store
 // calculated values required by multiple build functions but not known
@@ -25,6 +26,7 @@ class FFNavigationBarItem extends StatelessWidget {
   FFNavigationBarTheme theme;
   bool showSelectedItemShadow;
   double itemWidth;
+  VoidCallback onClick;
 
   void setIndex(int index) {
     this.index = index;
@@ -35,7 +37,7 @@ class FFNavigationBarItem extends StatelessWidget {
   }
 
   Color _getBorderColor(bool isOn) {
-    return isOn ? _getDerivedBorderColor() : Colors.transparent;
+    return isOn ? _getDerivedBorderColor() : _getDerivedBorderColor().withOpacity(0.0);
   }
 
   bool _isItemSelected() {
@@ -53,6 +55,7 @@ class FFNavigationBarItem extends StatelessWidget {
     this.selectedLabelColor,
     this.iconData,
     this.animationDuration = kDefaultAnimationDuration,
+    this.onClick,
   }) : super(key: key);
 
   Center _makeLabel(String label) {
@@ -82,8 +85,25 @@ class FFNavigationBarItem extends StatelessWidget {
     double radius = itemWidth / 2;
     double innerBoxSize = itemWidth - 8;
     double innerRadius = (itemWidth - 8) / 2 - 4;
-
-    return CircleAvatar(
+    
+    return AnimatedContainer(
+      duration: animationDuration,
+      width: itemWidth,
+      height: isSelected ? itemWidth : itemWidth / 1.4,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        gradient: isSelected ? theme.selectedItemBackgroundGradient : null,
+        color: isSelected
+          ? selectedBackgroundColor ?? theme.selectedItemBackgroundColor
+          : theme.unselectedItemBackgroundColor,
+        border: Border.all(width: theme.selectedItemBorderWidth, color: _getBorderColor(isSelected)),
+      ),
+      child: (isSelected && onClick != null) 
+        ? GestureDetector(onTap: onClick, child:_makeIcon(iconData))
+        : _makeIcon(iconData),
+    );
+    /*return CircleAvatar(
       radius: isSelected ? radius : radius * 0.7,
       backgroundColor: _getBorderColor(isSelected),
       child: SizedBox(
@@ -97,18 +117,32 @@ class FFNavigationBarItem extends StatelessWidget {
           child: _makeIcon(iconData),
         ),
       ),
-    );
+    );*/
   }
 
-  Widget _makeIcon(
-    IconData iconData,
-  ) {
+  Widget _makeIcon(IconData iconData) {
     bool isSelected = _isItemSelected();
+    if(theme.unselectedItemIconGradient != null && !isSelected)
+      return ShaderMask(
+        blendMode: BlendMode.srcIn,
+        shaderCallback: (Rect bounds) {
+          return ui.Gradient.linear((theme.unselectedItemIconGradient.begin as Alignment).alongSize(bounds.size),
+            (theme.unselectedItemIconGradient.end as Alignment).alongSize(bounds.size), theme.unselectedItemIconGradient.colors);
+        },
+        child: Icon(
+          iconData,
+          size: theme.unselectedItemIconSize,
+        ),
+      );
+    else
     return Icon(
       iconData,
       color: isSelected
           ? selectedForegroundColor ?? theme.selectedItemIconColor
           : theme.unselectedItemIconColor,
+      size: isSelected
+          ? theme.selectedItemIconSize
+          : theme.unselectedItemIconSize,
     );
   }
 
@@ -124,6 +158,7 @@ class FFNavigationBarItem extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.elliptical(itemWidth / 2, 2)),
         boxShadow: [
+          theme.barShadow ??
           const BoxShadow(
             color: Colors.black12,
             blurRadius: 2,
@@ -148,7 +183,7 @@ class FFNavigationBarItem extends StatelessWidget {
 
     bool isSelected = _isItemSelected();
     double itemHeight = itemWidth - 20;
-    double topOffset = isSelected ? -20 : -10;
+    double topOffset = isSelected ? (-10 - theme.selectedItemTopOffset) : -10;
     double iconTopSpacer = isSelected ? 0 : 2;
     double shadowTopSpacer = 4;
 
