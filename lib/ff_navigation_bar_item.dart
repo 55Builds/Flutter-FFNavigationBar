@@ -1,3 +1,4 @@
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'ff_navigation_bar_theme.dart';
@@ -16,6 +17,10 @@ class FFNavigationBarItem extends StatelessWidget {
   final String label;
   final IconData iconData;
   final Duration animationDuration;
+  final String badgeContent;
+  Color badgeColor;
+  Color badgeTextColor;
+  Color selectedBadgeColor;
   Color selectedBackgroundColor;
   Color selectedForegroundColor;
   Color selectedLabelColor;
@@ -53,6 +58,10 @@ class FFNavigationBarItem extends StatelessWidget {
     this.selectedLabelColor,
     this.iconData,
     this.animationDuration = kDefaultAnimationDuration,
+    this.badgeContent,
+    this.badgeColor = Colors.transparent,
+    this.selectedBadgeColor,
+    this.badgeTextColor
   }) : super(key: key);
 
   Center _makeLabel(String label) {
@@ -104,11 +113,24 @@ class FFNavigationBarItem extends StatelessWidget {
     IconData iconData,
   ) {
     bool isSelected = _isItemSelected();
-    return Icon(
-      iconData,
-      color: isSelected
-          ? selectedForegroundColor ?? theme.selectedItemIconColor
-          : theme.unselectedItemIconColor,
+    return Badge(
+      showBadge: badgeContent != null && badgeContent.isNotEmpty,
+      elevation: 0,
+      badgeColor: isSelected
+          ? selectedBadgeColor ?? badgeColor
+          : badgeColor,
+      badgeContent: Text(
+        badgeContent ?? '',
+        style: TextStyle(
+          color: badgeTextColor
+        ),
+      ),
+      child: Icon(
+        iconData,
+        color: isSelected
+            ? selectedForegroundColor ?? theme.selectedItemIconColor
+            : theme.unselectedItemIconColor,
+      ),
     );
   }
 

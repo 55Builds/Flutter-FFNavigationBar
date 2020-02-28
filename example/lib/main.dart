@@ -62,6 +62,9 @@ class _MyHomePageState extends State<MyHomePage> {
         },
         items: [
           FFNavigationBarItem(
+            badgeContent: '2',
+            badgeColor: Theme.of(context).primaryColor,
+            badgeTextColor: Colors.white,
             iconData: Icons.calendar_today,
             label: 'Bar Theme',
           ),
