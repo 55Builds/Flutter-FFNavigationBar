@@ -11,6 +11,7 @@ dependencies:
     sdk: flutter
 
   provider: ^4.0.2
+  badges: ^1.1.0 # Badges for Flutter
 
 dev_dependencies:
   flutter_test:
