@@ -9,7 +9,7 @@ dependencies:
 ```
 
 ## Basic use
-```
+```dart
 import 'package:flutter/material.dart';
 import 'package:ff_navigation_bar/ff_navigation_bar.dart';
 ...
