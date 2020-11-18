@@ -5,7 +5,7 @@ A highly configurable navigation bar with emphasis for the selected item.
 ## Add dependency
 ```
 dependencies:
-  ff_navigation_bar: ^0.1.5
+  ff_navigation_bar: ^0.1.6
 ```
 
 ## Basic use
@@ -82,6 +82,14 @@ The navbar has a Theme class which can be used to define the majority of appeara
 * barHeight: The height for the bar (which is automatically included within a SafeArea widget)
 * itemWidth: The width to use for the selected item CircleAvater (default = 48.0)
 * showSelectedItemShadow: Indicates if the drop shadow below the selected item should be displayed (default = true)
+* barShadow: Optional BoxShadow effect of navigation bar
+* selectedItemBackgroundGradient: Optional LinearGradient of selected circle background (default uses selectedItemBackgroundColor)
+* unselectedItemIconGradient: Optional LinearGradient of unselected icon (default uses unselectedItemIconColor)
+* selectedItemBorderWidth: The thickness for the selected item's circle border (default = 4.0)
+* selectedItemIconSize: The size of the selected icon (default to theme)
+* unselectedItemIconSize: The size of the unselected icons (default to theme)
+* selectedItemTopOffset: The y offset of the selected icon's circle overhang (default = 10.0)
+
 
 ## FFNavigationBar Attributes
 * selectedIndex: The item number (zero indexed) which should be marked as selected
@@ -96,3 +104,4 @@ The navbar has a Theme class which can be used to define the majority of appeara
 * selectedBackgroundColor: A Color value which can override the theme's selectedItemBackgroundColor value for a specific navigation bar item (used to create different colors for each item)
 * selectedForegroundColor: A Color value which can override the theme's selectedItemIconColor value
 * selectedLabelColor: A Color value which can override the theme's selectedItemLabelColor value
+* onClick: Optional function call when clicking the already selected item.

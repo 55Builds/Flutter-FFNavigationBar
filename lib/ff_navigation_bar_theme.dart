@@ -9,6 +9,13 @@ class FFNavigationBarTheme {
   final Color unselectedItemBackgroundColor;
   final Color unselectedItemIconColor;
   final Color unselectedItemLabelColor;
+  final LinearGradient selectedItemBackgroundGradient;
+  final LinearGradient unselectedItemIconGradient;
+  final BoxShadow barShadow;
+  final double selectedItemBorderWidth;
+  final double selectedItemIconSize;
+  final double unselectedItemIconSize;
+  final double selectedItemTopOffset;
 
   final TextStyle selectedItemTextStyle;
   final TextStyle unselectedItemTextStyle;
@@ -41,6 +48,13 @@ class FFNavigationBarTheme {
     this.unselectedItemBackgroundColor = Colors.transparent,
     this.unselectedItemIconColor = Colors.grey,
     this.unselectedItemLabelColor = Colors.grey,
+    this.selectedItemBackgroundGradient,
+    this.unselectedItemIconGradient,
+    this.barShadow,
+    this.selectedItemBorderWidth = 4,
+    this.selectedItemIconSize,
+    this.unselectedItemIconSize,
+    this.selectedItemTopOffset = 10.0,
     this.selectedItemTextStyle = kDefaultSelectedItemTextStyle,
     this.unselectedItemTextStyle = kDefaultUnselectedTextStyle,
     this.itemWidth = kDefaultItemWidth,

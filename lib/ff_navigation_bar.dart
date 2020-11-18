@@ -51,6 +51,7 @@ class _FFNavigationBarState extends State<FFNavigationBar> {
         decoration: BoxDecoration(
           color: bgColor,
           boxShadow: [
+            theme.barShadow ??
             const BoxShadow(
               color: Colors.black12,
               blurRadius: 2,
