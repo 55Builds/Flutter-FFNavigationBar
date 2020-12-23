@@ -180,7 +180,7 @@ class FFNavigationBarItem extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: isSelected ? topOffset - 2.5 : topOffset,
+              top: isSelected ? topOffset - 3.5 : topOffset,
               left: -itemWidth / 2,
               right: -itemWidth / 2,
               child: Column(
