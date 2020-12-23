@@ -63,12 +63,7 @@ class FFNavigationBarItem extends StatelessWidget {
       child: Text(
         label,
         textAlign: TextAlign.center,
-        style: TextStyle(
-          fontSize: isSelected ? theme.selectedItemTextStyle.fontSize : theme.unselectedItemTextStyle.fontSize,
-          fontWeight: isSelected ? theme.selectedItemTextStyle.fontWeight : theme.unselectedItemTextStyle.fontWeight,
-          color: isSelected ? selectedLabelColor ?? theme.selectedItemLabelColor : theme.unselectedItemLabelColor,
-          letterSpacing: isSelected ? 1.1 : 1.0,
-        ),
+        style: isSelected ? theme.selectedItemTextStyle : theme.unselectedItemTextStyle,
       ),
     );
   }
@@ -155,7 +150,6 @@ class FFNavigationBarItem extends StatelessWidget {
 
     selectedBackgroundColor = selectedBackgroundColor ?? theme.selectedItemBackgroundColor;
     selectedForegroundColor = selectedForegroundColor ?? theme.selectedItemIconColor;
-    selectedLabelColor = selectedLabelColor ?? theme.selectedItemLabelColor;
 
     bool isSelected = _isItemSelected();
     double itemHeight = itemWidth - 20;
