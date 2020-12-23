@@ -9,7 +9,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
   provider: ^4.0.2
 
 dev_dependencies:

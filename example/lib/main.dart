@@ -47,12 +47,13 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: FFNavigationBar(
         theme: FFNavigationBarTheme(
           barBackgroundColor: Colors.white,
-          selectedItemBorderColor: Colors.transparent,
-          selectedItemBackgroundColor: Colors.green,
-          selectedItemIconColor: Colors.white,
-          selectedItemLabelColor: Colors.black,
-          showSelectedItemShadow: false,
-          barHeight: 70,
+          selectedItemBackgroundColor: Colors.white,
+          selectedItemIconColor: Colors.red,
+          selectedItemLabelColor: Colors.red,
+          unselectedItemIconColor: Colors.black,
+          unselectedItemLabelColor: Colors.black,
+          showSelectedItemTopShadow: true,
+          showSelectedItemBottomShadow: false,
         ),
         selectedIndex: selectedIndex,
         onSelectTab: (index) {
@@ -68,22 +69,14 @@ class _MyHomePageState extends State<MyHomePage> {
           FFNavigationBarItem(
             iconData: Icons.people,
             label: 'Orange',
-            selectedBackgroundColor: Colors.orange,
           ),
           FFNavigationBarItem(
             iconData: Icons.attach_money,
             label: 'Purple',
-            selectedBackgroundColor: Colors.purple,
           ),
           FFNavigationBarItem(
             iconData: Icons.note,
             label: 'Blue',
-            selectedBackgroundColor: Colors.blue,
-          ),
-          FFNavigationBarItem(
-            iconData: Icons.settings,
-            label: 'Red Item',
-            selectedBackgroundColor: Colors.red,
           ),
         ],
       ),

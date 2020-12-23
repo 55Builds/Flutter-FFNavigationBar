@@ -16,7 +16,8 @@ class FFNavigationBarTheme {
   final double barHeight;
   final double itemWidth;
 
-  final bool showSelectedItemShadow;
+  final bool showSelectedItemTopShadow;
+  final bool showSelectedItemBottomShadow;
 
   static const kDefaultItemWidth = 48.0;
 
@@ -33,6 +34,7 @@ class FFNavigationBarTheme {
   );
 
   FFNavigationBarTheme({
+    this.showSelectedItemBottomShadow = true,
     this.barBackgroundColor = Colors.white,
     this.selectedItemBackgroundColor = Colors.blueAccent,
     this.selectedItemIconColor = Colors.white,
@@ -45,6 +47,6 @@ class FFNavigationBarTheme {
     this.unselectedItemTextStyle = kDefaultUnselectedTextStyle,
     this.itemWidth = kDefaultItemWidth,
     this.barHeight = 56.0,
-    this.showSelectedItemShadow = true,
+    this.showSelectedItemTopShadow = true,
   });
 }

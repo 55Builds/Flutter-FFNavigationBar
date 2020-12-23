@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'ff_navigation_bar_theme.dart';
 
 // This class has mutable instance properties as they are used to store
@@ -23,7 +24,8 @@ class FFNavigationBarItem extends StatelessWidget {
   int index;
   int selectedIndex;
   FFNavigationBarTheme theme;
-  bool showSelectedItemShadow;
+  bool showSelectedItemTopShadow;
+  bool showSelectedItemBottomShadow;
   double itemWidth;
 
   void setIndex(int index) {
@@ -62,15 +64,9 @@ class FFNavigationBarItem extends StatelessWidget {
         label,
         textAlign: TextAlign.center,
         style: TextStyle(
-          fontSize: isSelected
-              ? theme.selectedItemTextStyle.fontSize
-              : theme.unselectedItemTextStyle.fontSize,
-          fontWeight: isSelected
-              ? theme.selectedItemTextStyle.fontWeight
-              : theme.unselectedItemTextStyle.fontWeight,
-          color: isSelected
-              ? selectedLabelColor ?? theme.selectedItemLabelColor
-              : theme.unselectedItemLabelColor,
+          fontSize: isSelected ? theme.selectedItemTextStyle.fontSize : theme.unselectedItemTextStyle.fontSize,
+          fontWeight: isSelected ? theme.selectedItemTextStyle.fontWeight : theme.unselectedItemTextStyle.fontWeight,
+          color: isSelected ? selectedLabelColor ?? theme.selectedItemLabelColor : theme.unselectedItemLabelColor,
           letterSpacing: isSelected ? 1.1 : 1.0,
         ),
       ),
@@ -91,9 +87,7 @@ class FFNavigationBarItem extends StatelessWidget {
         height: isSelected ? innerBoxSize : innerBoxSize / 2,
         child: CircleAvatar(
           radius: innerRadius,
-          backgroundColor: isSelected
-              ? selectedBackgroundColor ?? theme.selectedItemBackgroundColor
-              : theme.unselectedItemBackgroundColor,
+          backgroundColor: isSelected ? selectedBackgroundColor ?? theme.selectedItemBackgroundColor : theme.unselectedItemBackgroundColor,
           child: _makeIcon(iconData),
         ),
       ),
@@ -106,17 +100,35 @@ class FFNavigationBarItem extends StatelessWidget {
     bool isSelected = _isItemSelected();
     return Icon(
       iconData,
-      color: isSelected
-          ? selectedForegroundColor ?? theme.selectedItemIconColor
-          : theme.unselectedItemIconColor,
+      color: isSelected ? selectedForegroundColor ?? theme.selectedItemIconColor : theme.unselectedItemIconColor,
     );
   }
 
-  Widget _makeShadow() {
+  Widget _makeSelectedItemTopShadow() {
+    bool isSelected = _isItemSelected();
+    double height = isSelected ? 15 : 0;
+    double width = isSelected ? itemWidth + 2 : 0;
+
+    return AnimatedContainer(
+      duration: Duration(milliseconds: 100),
+      height: height,
+      width: width,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.elliptical(itemWidth / 2, 2)),
+        boxShadow: [
+          const BoxShadow(
+            color: Colors.black12,
+            blurRadius: 14,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _makeSelectedItemBottomShadow() {
     bool isSelected = _isItemSelected();
     double height = isSelected ? 4 : 0;
-    double width = isSelected ? itemWidth + 6 : 0;
-
+    double width = isSelected ? itemWidth + 2 : 0;
     return AnimatedContainer(
       duration: Duration(milliseconds: 100),
       height: height,
@@ -136,14 +148,13 @@ class FFNavigationBarItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     theme = Provider.of<FFNavigationBarTheme>(context);
-    showSelectedItemShadow = theme.showSelectedItemShadow;
+    showSelectedItemTopShadow = theme.showSelectedItemTopShadow;
+    showSelectedItemBottomShadow = theme.showSelectedItemBottomShadow;
     itemWidth = theme.itemWidth;
     selectedIndex = Provider.of<int>(context);
 
-    selectedBackgroundColor =
-        selectedBackgroundColor ?? theme.selectedItemBackgroundColor;
-    selectedForegroundColor =
-        selectedForegroundColor ?? theme.selectedItemIconColor;
+    selectedBackgroundColor = selectedBackgroundColor ?? theme.selectedItemBackgroundColor;
+    selectedForegroundColor = selectedForegroundColor ?? theme.selectedItemIconColor;
     selectedLabelColor = selectedLabelColor ?? theme.selectedItemLabelColor;
 
     bool isSelected = _isItemSelected();
@@ -154,7 +165,8 @@ class FFNavigationBarItem extends StatelessWidget {
 
     Widget labelWidget = _makeLabel(label);
     Widget iconAreaWidget = _makeIconArea(itemWidth, iconData);
-    Widget shadowWidget = showSelectedItemShadow ? _makeShadow() : Container();
+    Widget topShadowWidget = showSelectedItemTopShadow ? _makeSelectedItemTopShadow() : Container();
+    Widget bottomShadowWidget = showSelectedItemBottomShadow ? _makeSelectedItemBottomShadow() : Container();
 
     return AnimatedContainer(
       width: itemWidth,
@@ -167,6 +179,14 @@ class FFNavigationBarItem extends StatelessWidget {
           overflow: Overflow.visible,
           children: <Widget>[
             Positioned(
+              top: topOffset - 2,
+              left: -itemWidth / 2,
+              right: -itemWidth / 2,
+              child: Column(
+                children: <Widget>[topShadowWidget],
+              ),
+            ),
+            Positioned(
               top: topOffset,
               left: -itemWidth / 2,
               right: -itemWidth / 2,
@@ -177,7 +197,7 @@ class FFNavigationBarItem extends StatelessWidget {
                   iconAreaWidget,
                   labelWidget,
                   SizedBox(height: shadowTopSpacer),
-                  shadowWidget,
+                  bottomShadowWidget,
                 ],
               ),
             ),
