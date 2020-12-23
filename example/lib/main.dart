@@ -45,13 +45,11 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       bottomNavigationBar: FFNavigationBar(
+        borderRadius: BorderRadius.only(topLeft: Radius.circular(16), topRight: Radius.circular(16)),
         theme: FFNavigationBarTheme(
           barBackgroundColor: Colors.white,
-          selectedItemBackgroundColor: Colors.white,
-          selectedItemIconColor: Colors.red,
-          unselectedItemIconColor: Colors.black,
-          showSelectedItemTopShadow: true,
-          showSelectedItemBottomShadow: false,
+          selectedItemBackgroundColor: Colors.green,
+          selectedItemIconColor: Colors.white,
         ),
         selectedIndex: selectedIndex,
         onSelectTab: (index) {
@@ -62,19 +60,23 @@ class _MyHomePageState extends State<MyHomePage> {
         items: [
           FFNavigationBarItem(
             iconData: Icons.calendar_today,
-            label: 'Bar Theme',
+            label: 'Schedule',
           ),
           FFNavigationBarItem(
             iconData: Icons.people,
-            label: 'Orange',
+            label: 'Contacts',
           ),
           FFNavigationBarItem(
             iconData: Icons.attach_money,
-            label: 'Purple',
+            label: 'Bills',
           ),
           FFNavigationBarItem(
             iconData: Icons.note,
-            label: 'Blue',
+            label: 'Notes',
+          ),
+          FFNavigationBarItem(
+            iconData: Icons.settings,
+            label: 'Settings',
           ),
         ],
       ),

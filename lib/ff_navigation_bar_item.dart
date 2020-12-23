@@ -19,8 +19,8 @@ class FFNavigationBarItem extends StatelessWidget {
   final Duration animationDuration;
   Color selectedBackgroundColor;
   Color selectedForegroundColor;
-  Color selectedLabelColor;
-
+  TextStyle selectedTextStyle;
+  TextStyle unselectedTextStyle;
   int index;
   int selectedIndex;
   FFNavigationBarTheme theme;
@@ -52,7 +52,6 @@ class FFNavigationBarItem extends StatelessWidget {
     this.itemWidth = 60,
     this.selectedBackgroundColor,
     this.selectedForegroundColor,
-    this.selectedLabelColor,
     this.iconData,
     this.animationDuration = kDefaultAnimationDuration,
   }) : super(key: key);
@@ -63,7 +62,7 @@ class FFNavigationBarItem extends StatelessWidget {
       child: Text(
         label,
         textAlign: TextAlign.center,
-        style: isSelected ? theme.selectedItemTextStyle : theme.unselectedItemTextStyle,
+        style: isSelected ? selectedTextStyle ?? theme.selectedItemTextStyle : unselectedTextStyle ?? theme.unselectedItemTextStyle,
       ),
     );
   }
