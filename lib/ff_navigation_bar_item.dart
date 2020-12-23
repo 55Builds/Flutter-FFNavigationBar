@@ -16,6 +16,7 @@ import 'ff_navigation_bar_theme.dart';
 class FFNavigationBarItem extends StatelessWidget {
   final String label;
   final IconData iconData;
+  final AssetImage assetImage;
   final Duration animationDuration;
   Color selectedBackgroundColor;
   Color selectedForegroundColor;
@@ -27,6 +28,17 @@ class FFNavigationBarItem extends StatelessWidget {
   bool showSelectedItemTopShadow;
   bool showSelectedItemBottomShadow;
   double itemWidth;
+
+  FFNavigationBarItem({
+    Key key,
+    this.label,
+    this.itemWidth = 60,
+    this.selectedBackgroundColor,
+    this.selectedForegroundColor,
+    this.iconData,
+    this.animationDuration = kDefaultAnimationDuration,
+    this.assetImage,
+  }) : super(key: key);
 
   void setIndex(int index) {
     this.index = index;
@@ -45,16 +57,6 @@ class FFNavigationBarItem extends StatelessWidget {
   }
 
   static const kDefaultAnimationDuration = Duration(milliseconds: 1500);
-
-  FFNavigationBarItem({
-    Key key,
-    this.label,
-    this.itemWidth = 60,
-    this.selectedBackgroundColor,
-    this.selectedForegroundColor,
-    this.iconData,
-    this.animationDuration = kDefaultAnimationDuration,
-  }) : super(key: key);
 
   Center _makeLabel(String label) {
     bool isSelected = _isItemSelected();
@@ -82,9 +84,17 @@ class FFNavigationBarItem extends StatelessWidget {
         child: CircleAvatar(
           radius: innerRadius,
           backgroundColor: isSelected ? selectedBackgroundColor ?? theme.selectedItemBackgroundColor : theme.unselectedItemBackgroundColor,
-          child: _makeIcon(iconData),
+          child: _makeIcon(iconData) ?? _makeImageIcon(assetImage),
         ),
       ),
+    );
+  }
+
+  Widget _makeImageIcon(imageIcon) {
+    bool isSelected = _isItemSelected();
+    return ImageIcon(
+      imageIcon,
+      color: isSelected ? selectedForegroundColor ?? theme.selectedItemIconColor : theme.unselectedItemIconColor,
     );
   }
 
