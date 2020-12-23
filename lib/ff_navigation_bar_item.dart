@@ -91,7 +91,6 @@ class FFNavigationBarItem extends StatelessWidget {
   }
 
   Widget _makeImageIcon(assetImage) {
-    print('assetImage');
     bool isSelected = _isItemSelected();
     return ImageIcon(
       assetImage,
