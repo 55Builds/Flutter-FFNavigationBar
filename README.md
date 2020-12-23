@@ -1,6 +1,5 @@
 # ff_navigation_bar
 ![](navbar-demo.gif)
-![](navbar-demo-radius.png)
 
 A highly configurable navigation bar with emphasis for the selected item.
 
