@@ -1,6 +1,8 @@
 # ff_navigation_bar
-A highly configurable navigation bar with emphasis for the selected item.
 ![](navbar-demo.gif)
+![](navbar-demo-radius.png)
+
+A highly configurable navigation bar with emphasis for the selected item.
 
 ## Add dependency
 ```
