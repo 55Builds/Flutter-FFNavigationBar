@@ -59,7 +59,8 @@ class _MyHomePageState extends State<MyHomePage> {
         },
         items: [
           FFNavigationBarItem(
-            iconData: Icons.calendar_today,
+             assetImage: AssetImage('asset/images/noun_search coupon_3391481.png'),
+            iconData: null,
             label: 'Schedule',
           ),
           FFNavigationBarItem(

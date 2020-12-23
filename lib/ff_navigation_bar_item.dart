@@ -84,16 +84,17 @@ class FFNavigationBarItem extends StatelessWidget {
         child: CircleAvatar(
           radius: innerRadius,
           backgroundColor: isSelected ? selectedBackgroundColor ?? theme.selectedItemBackgroundColor : theme.unselectedItemBackgroundColor,
-          child: _makeIcon(iconData) ?? _makeImageIcon(assetImage),
+          child: iconData == null ? _makeImageIcon(assetImage) : _makeIcon(iconData),
         ),
       ),
     );
   }
 
-  Widget _makeImageIcon(imageIcon) {
+  Widget _makeImageIcon(assetImage) {
+    print('assetImage');
     bool isSelected = _isItemSelected();
     return ImageIcon(
-      imageIcon,
+      assetImage,
       color: isSelected ? selectedForegroundColor ?? theme.selectedItemIconColor : theme.unselectedItemIconColor,
     );
   }
