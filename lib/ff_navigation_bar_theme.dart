@@ -4,19 +4,19 @@ class FFNavigationBarTheme {
   final Color barBackgroundColor;
   final Color selectedItemBackgroundColor;
   final Color selectedItemIconColor;
-  final Color selectedItemLabelColor;
   final Color selectedItemBorderColor;
   final Color unselectedItemBackgroundColor;
   final Color unselectedItemIconColor;
-  final Color unselectedItemLabelColor;
 
   final TextStyle selectedItemTextStyle;
   final TextStyle unselectedItemTextStyle;
 
   final double barHeight;
   final double itemWidth;
+  final int iconSize;
 
-  final bool showSelectedItemShadow;
+  final bool showSelectedItemTopShadow;
+  final bool showSelectedItemBottomShadow;
 
   static const kDefaultItemWidth = 48.0;
 
@@ -33,18 +33,18 @@ class FFNavigationBarTheme {
   );
 
   FFNavigationBarTheme({
+    this.showSelectedItemBottomShadow = true,
     this.barBackgroundColor = Colors.white,
     this.selectedItemBackgroundColor = Colors.blueAccent,
     this.selectedItemIconColor = Colors.white,
-    this.selectedItemLabelColor = Colors.black,
     this.selectedItemBorderColor = Colors.white,
     this.unselectedItemBackgroundColor = Colors.transparent,
     this.unselectedItemIconColor = Colors.grey,
-    this.unselectedItemLabelColor = Colors.grey,
     this.selectedItemTextStyle = kDefaultSelectedItemTextStyle,
     this.unselectedItemTextStyle = kDefaultUnselectedTextStyle,
     this.itemWidth = kDefaultItemWidth,
     this.barHeight = 56.0,
-    this.showSelectedItemShadow = true,
+    this.iconSize = 24,
+    this.showSelectedItemTopShadow = true,
   });
 }

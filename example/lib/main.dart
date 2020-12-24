@@ -45,14 +45,12 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       bottomNavigationBar: FFNavigationBar(
+        borderRadius: BorderRadius.only(topLeft: Radius.circular(16), topRight: Radius.circular(16)),
         theme: FFNavigationBarTheme(
           barBackgroundColor: Colors.white,
-          selectedItemBorderColor: Colors.transparent,
           selectedItemBackgroundColor: Colors.green,
           selectedItemIconColor: Colors.white,
-          selectedItemLabelColor: Colors.black,
-          showSelectedItemShadow: false,
-          barHeight: 70,
+          iconSize: 24,
         ),
         selectedIndex: selectedIndex,
         onSelectTab: (index) {
@@ -62,28 +60,25 @@ class _MyHomePageState extends State<MyHomePage> {
         },
         items: [
           FFNavigationBarItem(
-            iconData: Icons.calendar_today,
-            label: 'Bar Theme',
+            assetImage: AssetImage('asset/images/noun_search coupon_3391481.png'),
+            iconData: null,
+            label: 'Schedule',
           ),
           FFNavigationBarItem(
             iconData: Icons.people,
-            label: 'Orange',
-            selectedBackgroundColor: Colors.orange,
+            label: 'Contacts',
           ),
           FFNavigationBarItem(
             iconData: Icons.attach_money,
-            label: 'Purple',
-            selectedBackgroundColor: Colors.purple,
+            label: 'Bills',
           ),
           FFNavigationBarItem(
             iconData: Icons.note,
-            label: 'Blue',
-            selectedBackgroundColor: Colors.blue,
+            label: 'Notes',
           ),
           FFNavigationBarItem(
             iconData: Icons.settings,
-            label: 'Red Item',
-            selectedBackgroundColor: Colors.red,
+            label: 'Settings',
           ),
         ],
       ),

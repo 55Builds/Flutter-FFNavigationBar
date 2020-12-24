@@ -2,11 +2,12 @@ library ff_navigation_bar;
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'ff_navigation_bar_theme.dart';
-import 'ff_navigation_bar_item.dart';
 
-export 'ff_navigation_bar_theme.dart';
+import 'ff_navigation_bar_item.dart';
+import 'ff_navigation_bar_theme.dart';
+
 export 'ff_navigation_bar_item.dart';
+export 'ff_navigation_bar_theme.dart';
 
 class FFNavigationBar extends StatefulWidget {
   final Function onSelectTab;
@@ -14,6 +15,7 @@ class FFNavigationBar extends StatefulWidget {
   final FFNavigationBarTheme theme;
 
   final int selectedIndex;
+  final BorderRadius borderRadius;
 
   FFNavigationBar({
     Key key,
@@ -21,6 +23,7 @@ class FFNavigationBar extends StatefulWidget {
     @required this.onSelectTab,
     @required this.items,
     @required this.theme,
+    this.borderRadius,
   }) {
     assert(items != null);
     assert(items.length >= 2 && items.length <= 5);
@@ -28,8 +31,7 @@ class FFNavigationBar extends StatefulWidget {
   }
 
   @override
-  _FFNavigationBarState createState() =>
-      _FFNavigationBarState(selectedIndex: selectedIndex);
+  _FFNavigationBarState createState() => _FFNavigationBarState(selectedIndex: selectedIndex);
 }
 
 class _FFNavigationBarState extends State<FFNavigationBar> {
@@ -39,8 +41,7 @@ class _FFNavigationBarState extends State<FFNavigationBar> {
   @override
   Widget build(BuildContext context) {
     final FFNavigationBarTheme theme = widget.theme;
-    final bgColor =
-        theme.barBackgroundColor ?? Theme.of(context).bottomAppBarColor;
+    final bgColor = theme.barBackgroundColor ?? Theme.of(context).bottomAppBarColor;
 
     return MultiProvider(
       providers: [
@@ -50,10 +51,12 @@ class _FFNavigationBarState extends State<FFNavigationBar> {
       child: Container(
         decoration: BoxDecoration(
           color: bgColor,
+          borderRadius: widget.borderRadius,
           boxShadow: [
             const BoxShadow(
               color: Colors.black12,
-              blurRadius: 2,
+              blurRadius: 6,
+              spreadRadius: 2,
             ),
           ],
         ),
@@ -78,8 +81,7 @@ class _FFNavigationBarState extends State<FFNavigationBar> {
                   child: Container(
                     color: Colors.transparent,
                     child: SizedBox(
-                      width: MediaQuery.of(context).size.width /
-                          widget.items.length,
+                      width: MediaQuery.of(context).size.width / widget.items.length,
                       height: theme.barHeight,
                       child: item,
                     ),
