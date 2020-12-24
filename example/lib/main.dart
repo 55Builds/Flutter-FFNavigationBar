@@ -50,6 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
           barBackgroundColor: Colors.white,
           selectedItemBackgroundColor: Colors.green,
           selectedItemIconColor: Colors.white,
+          iconSize: 24,
         ),
         selectedIndex: selectedIndex,
         onSelectTab: (index) {
@@ -59,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
         },
         items: [
           FFNavigationBarItem(
-             assetImage: AssetImage('asset/images/noun_search coupon_3391481.png'),
+            assetImage: AssetImage('asset/images/noun_search coupon_3391481.png'),
             iconData: null,
             label: 'Schedule',
           ),

@@ -13,6 +13,7 @@ class FFNavigationBarTheme {
 
   final double barHeight;
   final double itemWidth;
+  final int iconSize;
 
   final bool showSelectedItemTopShadow;
   final bool showSelectedItemBottomShadow;
@@ -43,6 +44,7 @@ class FFNavigationBarTheme {
     this.unselectedItemTextStyle = kDefaultUnselectedTextStyle,
     this.itemWidth = kDefaultItemWidth,
     this.barHeight = 56.0,
+    this.iconSize = 24,
     this.showSelectedItemTopShadow = true,
   });
 }

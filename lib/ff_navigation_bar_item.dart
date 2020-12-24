@@ -17,6 +17,7 @@ class FFNavigationBarItem extends StatelessWidget {
   final String label;
   final IconData iconData;
   final AssetImage assetImage;
+  final int iconSize;
   final Duration animationDuration;
   Color selectedBackgroundColor;
   Color selectedForegroundColor;
@@ -38,6 +39,7 @@ class FFNavigationBarItem extends StatelessWidget {
     this.iconData,
     this.animationDuration = kDefaultAnimationDuration,
     this.assetImage,
+    this.iconSize,
   }) : super(key: key);
 
   void setIndex(int index) {
@@ -95,6 +97,7 @@ class FFNavigationBarItem extends StatelessWidget {
     return ImageIcon(
       assetImage,
       color: isSelected ? selectedForegroundColor ?? theme.selectedItemIconColor : theme.unselectedItemIconColor,
+      size: iconSize?.toDouble() ?? theme.iconSize.toDouble(),
     );
   }
 
@@ -105,6 +108,7 @@ class FFNavigationBarItem extends StatelessWidget {
     return Icon(
       iconData,
       color: isSelected ? selectedForegroundColor ?? theme.selectedItemIconColor : theme.unselectedItemIconColor,
+      size: iconSize?.toDouble() ?? theme.iconSize.toDouble(),
     );
   }
 
