@@ -16,15 +16,13 @@ class FFNavigationBar extends StatefulWidget {
   final int selectedIndex;
 
   FFNavigationBar({
-    Key key,
+    Key? key,
     this.selectedIndex = 0,
-    @required this.onSelectTab,
-    @required this.items,
-    @required this.theme,
+    required this.onSelectTab,
+    required this.items,
+    required this.theme,
   }) {
-    assert(items != null);
     assert(items.length >= 2 && items.length <= 5);
-    assert(onSelectTab != null);
   }
 
   @override
@@ -33,14 +31,13 @@ class FFNavigationBar extends StatefulWidget {
 }
 
 class _FFNavigationBarState extends State<FFNavigationBar> {
-  int selectedIndex;
+  int? selectedIndex;
   _FFNavigationBarState({this.selectedIndex});
 
   @override
   Widget build(BuildContext context) {
     final FFNavigationBarTheme theme = widget.theme;
-    final bgColor =
-        theme.barBackgroundColor ?? Theme.of(context).bottomAppBarColor;
+    final bgColor = theme.barBackgroundColor;
 
     return MultiProvider(
       providers: [
