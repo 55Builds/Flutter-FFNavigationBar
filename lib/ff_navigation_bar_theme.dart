@@ -9,12 +9,12 @@ class FFNavigationBarTheme {
   final Color unselectedItemBackgroundColor;
   final Color unselectedItemIconColor;
   final Color unselectedItemLabelColor;
-  final LinearGradient selectedItemBackgroundGradient;
-  final LinearGradient unselectedItemIconGradient;
-  final BoxShadow barShadow;
+  final LinearGradient? selectedItemBackgroundGradient;
+  final LinearGradient? unselectedItemIconGradient;
+  final BoxShadow? barShadow;
   final double selectedItemBorderWidth;
-  final double selectedItemIconSize;
-  final double unselectedItemIconSize;
+  final double? selectedItemIconSize;
+  final double? unselectedItemIconSize;
   final double selectedItemTopOffset;
 
   final TextStyle selectedItemTextStyle;
