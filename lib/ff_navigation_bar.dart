@@ -16,31 +16,27 @@ class FFNavigationBar extends StatefulWidget {
   final int selectedIndex;
 
   FFNavigationBar({
-    Key key,
+    Key? key,
     this.selectedIndex = 0,
-    @required this.onSelectTab,
-    @required this.items,
-    @required this.theme,
+    required this.onSelectTab,
+    required this.items,
+    required this.theme,
   }) {
-    assert(items != null);
     assert(items.length >= 2 && items.length <= 5);
-    assert(onSelectTab != null);
   }
 
   @override
-  _FFNavigationBarState createState() =>
-      _FFNavigationBarState(selectedIndex: selectedIndex);
+  _FFNavigationBarState createState() => _FFNavigationBarState(selectedIndex: selectedIndex);
 }
 
 class _FFNavigationBarState extends State<FFNavigationBar> {
-  int selectedIndex;
+  int? selectedIndex;
   _FFNavigationBarState({this.selectedIndex});
 
   @override
   Widget build(BuildContext context) {
     final FFNavigationBarTheme theme = widget.theme;
-    final bgColor =
-        theme.barBackgroundColor ?? Theme.of(context).bottomAppBarColor;
+    final bgColor = theme.barBackgroundColor;
 
     return MultiProvider(
       providers: [
@@ -51,10 +47,11 @@ class _FFNavigationBarState extends State<FFNavigationBar> {
         decoration: BoxDecoration(
           color: bgColor,
           boxShadow: [
-            const BoxShadow(
-              color: Colors.black12,
-              blurRadius: 2,
-            ),
+            theme.barShadow ??
+                const BoxShadow(
+                  color: Colors.black12,
+                  blurRadius: 2,
+                ),
           ],
         ),
         child: SafeArea(
@@ -78,8 +75,7 @@ class _FFNavigationBarState extends State<FFNavigationBar> {
                   child: Container(
                     color: Colors.transparent,
                     child: SizedBox(
-                      width: MediaQuery.of(context).size.width /
-                          widget.items.length,
+                      width: MediaQuery.of(context).size.width / widget.items.length,
                       height: theme.barHeight,
                       child: item,
                     ),
