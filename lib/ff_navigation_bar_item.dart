@@ -164,7 +164,7 @@ class FFNavigationBarItem extends StatelessWidget {
         width: itemWidth,
         height: itemHeight,
         child: Stack(
-          overflow: Overflow.visible,
+          clipBehavior: Clip.none,
           children: <Widget>[
             Positioned(
               top: topOffset,
